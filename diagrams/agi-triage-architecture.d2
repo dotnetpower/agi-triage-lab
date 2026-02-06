@@ -1,0 +1,292 @@
+# AGI Triage Architecture Diagram
+# D2 Diagram Source - https://d2lang.com
+
+direction: down
+
+title: {
+  label: AGI Triage Architecture
+  near: top-center
+  shape: text
+  style: {
+    font-size: 28
+    bold: true
+    font-color: "#333"
+  }
+}
+
+# Input Layer
+input: {
+  label: 사용자 요청\n(User Request)
+  shape: oval
+  style: {
+    fill: "#e3f2fd"
+    stroke: "#1976d2"
+    font-color: "#1565c0"
+  }
+}
+
+# Triage Layer
+triage: {
+  label: AGI Triage Controller
+  style: {
+    fill: "#fff3e0"
+    stroke: "#f57c00"
+    font-color: "#e65100"
+    bold: true
+  }
+  
+  complexity_analyzer: {
+    label: Complexity\nAnalyzer
+    shape: hexagon
+    style: {
+      fill: "#ffe0b2"
+      stroke: "#ff9800"
+    }
+  }
+  
+  router: {
+    label: Intelligent\nRouter
+    shape: hexagon
+    style: {
+      fill: "#ffe0b2"
+      stroke: "#ff9800"
+    }
+  }
+  
+  cost_optimizer: {
+    label: Cost\nOptimizer
+    shape: hexagon
+    style: {
+      fill: "#ffe0b2"
+      stroke: "#ff9800"
+    }
+  }
+  
+  complexity_analyzer -> router: 분석 결과
+  router -> cost_optimizer: 라우팅 후보
+}
+
+# Model Selection Layer
+models: {
+  label: Model Selection
+  style: {
+    fill: "#e8f5e9"
+    stroke: "#43a047"
+  }
+  
+  small_model: {
+    label: Small Model\n(Fast/Low Cost)
+    shape: cylinder
+    style: {
+      fill: "#c8e6c9"
+      stroke: "#66bb6a"
+    }
+  }
+  
+  medium_model: {
+    label: Medium Model\n(Balanced)
+    shape: cylinder
+    style: {
+      fill: "#a5d6a7"
+      stroke: "#4caf50"
+    }
+  }
+  
+  large_model: {
+    label: Large Model\n(High Quality)
+    shape: cylinder
+    style: {
+      fill: "#81c784"
+      stroke: "#388e3c"
+    }
+  }
+}
+
+# Tool Selection Layer
+tools: {
+  label: Tool Selection
+  style: {
+    fill: "#f3e5f5"
+    stroke: "#8e24aa"
+  }
+  
+  llm_tool: {
+    label: LLM\nReasoning
+    shape: rectangle
+    style: {
+      fill: "#e1bee7"
+      stroke: "#ab47bc"
+    }
+  }
+  
+  search_tool: {
+    label: Search\nRetrieval
+    shape: rectangle
+    style: {
+      fill: "#e1bee7"
+      stroke: "#ab47bc"
+    }
+  }
+  
+  code_tool: {
+    label: Code\nExecution
+    shape: rectangle
+    style: {
+      fill: "#e1bee7"
+      stroke: "#ab47bc"
+    }
+  }
+  
+  api_tool: {
+    label: External\nAPI
+    shape: rectangle
+    style: {
+      fill: "#e1bee7"
+      stroke: "#ab47bc"
+    }
+  }
+}
+
+# Multi-Agent Layer
+agents: {
+  label: Multi-Agent Collaboration
+  style: {
+    fill: "#e0f7fa"
+    stroke: "#00acc1"
+    font-color: "#006064"
+  }
+  
+  orchestrator: {
+    label: Orchestrator\nAgent
+    shape: diamond
+    style: {
+      fill: "#80deea"
+      stroke: "#00bcd4"
+      bold: true
+    }
+  }
+  
+  specialist_1: {
+    label: Specialist\nAgent 1
+    shape: rectangle
+    style: {
+      fill: "#b2ebf2"
+      stroke: "#26c6da"
+    }
+  }
+  
+  specialist_2: {
+    label: Specialist\nAgent 2
+    shape: rectangle
+    style: {
+      fill: "#b2ebf2"
+      stroke: "#26c6da"
+    }
+  }
+  
+  specialist_3: {
+    label: Specialist\nAgent 3
+    shape: rectangle
+    style: {
+      fill: "#b2ebf2"
+      stroke: "#26c6da"
+    }
+  }
+  
+  orchestrator -> specialist_1: 태스크 위임
+  orchestrator -> specialist_2: 태스크 위임
+  orchestrator -> specialist_3: 태스크 위임
+}
+
+# Meta Reasoning Layer
+meta: {
+  label: Meta Reasoning
+  style: {
+    fill: "#fce4ec"
+    stroke: "#e91e63"
+  }
+  
+  self_reflection: {
+    label: Self\nReflection
+    shape: circle
+    style: {
+      fill: "#f8bbd9"
+      stroke: "#ec407a"
+    }
+  }
+  
+  quality_check: {
+    label: Quality\nValidation
+    shape: circle
+    style: {
+      fill: "#f8bbd9"
+      stroke: "#ec407a"
+    }
+  }
+  
+  self_reflection -> quality_check: 검증
+}
+
+# Safety Layer
+safety: {
+  label: Safety Triage
+  style: {
+    fill: "#ffebee"
+    stroke: "#c62828"
+    font-color: "#b71c1c"
+  }
+  
+  policy_check: {
+    label: Policy\nEnforcement
+    shape: hexagon
+    style: {
+      fill: "#ffcdd2"
+      stroke: "#ef5350"
+    }
+  }
+  
+  safety_filter: {
+    label: Safety\nFilter
+    shape: hexagon
+    style: {
+      fill: "#ffcdd2"
+      stroke: "#ef5350"
+    }
+  }
+  
+  policy_check -> safety_filter
+}
+
+# Output Layer
+output: {
+  label: 최적화된 응답\n(Optimized Response)
+  shape: oval
+  style: {
+    fill: "#e8f5e9"
+    stroke: "#2e7d32"
+    font-color: "#1b5e20"
+    bold: true
+  }
+}
+
+# Connections
+input -> triage: 요청 분석
+
+triage -> models: 모델 선택
+triage -> tools: 도구 선택
+triage -> agents: 에이전트 협업
+
+models -> meta: 추론 결과
+tools -> meta: 도구 결과
+agents -> meta: 협업 결과
+
+meta -> safety: 품질 검증
+safety -> output: 안전 검증 완료
+
+# Feedback Loop
+output -> triage: 피드백 루프 {
+  style: {
+    stroke: "#9e9e9e"
+    stroke-dash: 5
+  }
+}
