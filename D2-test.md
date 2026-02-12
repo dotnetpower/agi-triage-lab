@@ -74,3 +74,6 @@ waf -> aks.pod: Filtered Traffic {
 ### 3. 스마트 자동 판단
 - Azure 서비스 감지 → `flagship_terrastruct` 테마 자동 선택
 - 트래픽/흐름 감지 → 애니메이션 안내 자동 포함
+
+
+> Updated by Bori AI Agent
